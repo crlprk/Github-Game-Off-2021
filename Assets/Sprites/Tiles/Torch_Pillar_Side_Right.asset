@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Torch_Pillar_Side_Right
   m_EditorClassIdentifier: 
   m_AnimatedSprites:
-  - {fileID: -8527442550737655860, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
-  - {fileID: -1643389817789898457, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
-  - {fileID: 7211491898151854808, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
+  - {fileID: -1247501539174927167, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
+  - {fileID: -4124101759643554855, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
+  - {fileID: -7534391375593514864, guid: db7afbf35792f0b48883f321a8ce265a, type: 3}
   m_MinSpeed: 12
   m_MaxSpeed: 12
   m_AnimationStartTime: 0
   m_AnimationStartFrame: 0
-  m_TileColliderType: 0
+  m_TileColliderType: 1

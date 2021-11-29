@@ -13,17 +13,21 @@ public class Body : MonoBehaviour, IDamagable
     [SerializeField]
     bool inChain;
     public bool InChain { get { return inChain; }}  
+    bool isDead;
     Vector3 mouseStartPos;
     Vector3 bodyStartPos;
     public Weapon weapon;
     float nextFireTime;
+    Rigidbody2D rb;
     //Body connected;
 
     protected virtual void Awake() {
         inChain = false;
+        isDead = false;
         isDragged = false;
         nextFireTime = 0;
         GetComponent<Collider2D>().enabled = false;
+        rb = GetComponent<Rigidbody2D>();
     }
     public virtual void Instantiate(int index)
     {
@@ -46,10 +50,11 @@ public class Body : MonoBehaviour, IDamagable
         Point next = path.Head(-index + 1);
 
         //transform.position = Vector2.MoveTowards(transform.position, next.pos, dist);
+        //Vector2 target = Vector2.Lerp(prev.pos, next.pos, dist);
         transform.position = Vector2.Lerp(prev.pos, next.pos, dist);
         //Debug.Log(Vector2.Lerp(prev.pos, next.pos, dist));
        // Vector2 target = Vector2.Lerp(prev.pos, next.pos, dist) - (Vector2) transform.position;
-        //rb.velocity = target * centipede.speed * Time.deltaTime * 100;
+        //rb.MovePosition(target);
         transform.rotation = Quaternion.Lerp(prev.rot, next.rot, dist);
     }
 
@@ -64,13 +69,18 @@ public class Body : MonoBehaviour, IDamagable
     }
     public virtual void TakeDamage(Projectile source)
     {
-        Debug.Log("Taken");
-        health -= source.damage;
+        if (inChain)
+        {
+            health -= source.damage;
+        }
+        
     }
     public virtual void Die()
     {
-        Debug.Log(this.gameObject);
-        Destroy(this.gameObject);
+        animator.SetBool("IsDead", true);
+        isDead = true;
+        inChain = false;
+        gameObject.layer = 11;
     }
 
     public void Push(Vector2 dir)
@@ -97,7 +107,7 @@ public class Body : MonoBehaviour, IDamagable
     }
 
     protected void OnMouseDown() {
-        if (!inChain)
+        if (!inChain && !isDead)
         {
             isDragged = true;
             mouseStartPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

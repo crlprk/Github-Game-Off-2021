@@ -16,6 +16,7 @@ public class Centipede : MonoBehaviour
     Rigidbody2D rb;
     bool isStart;
     float turnDir;
+    int forwardMove;
 
     private void Awake() 
     {
@@ -28,6 +29,7 @@ public class Centipede : MonoBehaviour
     private void Update() 
     {
         turnDir = Input.GetAxis("Horizontal");
+        forwardMove = Input.GetKey(KeyCode.W) ? 1 : 0;
         
     }
     private void FixedUpdate() 
@@ -48,17 +50,20 @@ public class Centipede : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) 
     {
-        ContactPoint2D[] contacts = new ContactPoint2D[other.contactCount];
-        other.GetContacts(contacts);
-        Vector2 contactNormal = Vector2.zero;
-        for (int i = 0; i < contacts.Length; i++)
-        {    
-            contactNormal += contacts[i].normal;
+        if (other.gameObject.layer != 7)
+        {
+            ContactPoint2D[] contacts = new ContactPoint2D[other.contactCount];
+            other.GetContacts(contacts);
+            Vector2 contactNormal = Vector2.zero;
+            for (int i = 0; i < contacts.Length; i++)
+            {    
+                contactNormal += contacts[i].normal;
+            }
+            contactNormal /= contacts.Length;
+            float angle = Mathf.Atan2(contactNormal.y, contactNormal.x) * Mathf.Rad2Deg - 90;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            turnDir = 0;
         }
-        contactNormal /= contacts.Length;
-        float angle = Mathf.Atan2(contactNormal.y, contactNormal.x) * Mathf.Rad2Deg - 90;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-        turnDir = 0;
         
     }
 
@@ -88,7 +93,7 @@ public class Centipede : MonoBehaviour
 
     void MoveLeader()
     {
-        rb.velocity = transform.up * speed * Time.deltaTime * 100;
+        rb.velocity = transform.up * speed * Time.deltaTime * 100 * forwardMove;
         Vector2 headToLeader = ((Vector2) leader.transform.position) - path.Head().pos;
         pathDist = headToLeader.magnitude;
 
@@ -127,10 +132,9 @@ public class Centipede : MonoBehaviour
             {
                 Body body = components[i];
                 UpdateBody(body.index, false);
+                body.Die();
                 components.Remove(body);
                 path.Remove(body.index);
-                
-                body.Die();
             }
         }
         if (components.Count == 2 && !isStart)

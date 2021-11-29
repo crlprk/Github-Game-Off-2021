@@ -106,12 +106,12 @@ TextureImporter:
       name: Weapons (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 64
-        width: 32
-        height: 64
+        x: 6
+        y: 70
+        width: 20
+        height: 55
       alignment: 9
-      pivot: {x: 0.5, y: 0.796875}
+      pivot: {x: 0.5, y: 0.8181818}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -127,10 +127,10 @@ TextureImporter:
       name: Weapons (1)_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 64
-        width: 32
-        height: 64
+        x: 43
+        y: 81
+        width: 10
+        height: 11
       alignment: 9
       pivot: {x: 0.5, y: 0.3125}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,10 +148,10 @@ TextureImporter:
       name: Weapons (1)_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 64
-        width: 32
-        height: 64
+        x: 72
+        y: 78
+        width: 16
+        height: 16
       alignment: 9
       pivot: {x: 0.5, y: 0.34375}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,12 +169,12 @@ TextureImporter:
       name: Weapons (1)_3
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 32
-        height: 64
+        x: 11
+        y: 14
+        width: 10
+        height: 30
       alignment: 9
-      pivot: {x: 0.5, y: 0.328125}
+      pivot: {x: 0.5, y: 0.23333335}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

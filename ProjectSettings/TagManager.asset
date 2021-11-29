@@ -20,7 +20,7 @@ TagManager:
   - Enemy
   - World
   - Background
-  - 
+  - Ragdoll
   - 
   - 
   - 
@@ -56,6 +56,9 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 1851041155
+    locked: 0
+  - name: World_Tower_Top
+    uniqueID: 3690449219
     locked: 0
   - name: UI
     uniqueID: 1417995053

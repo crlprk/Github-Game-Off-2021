@@ -39,20 +39,24 @@
      <Compile Include="Assets\Scripts\PatrolState.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Head.cs" />
-     <Compile Include="Assets\Scripts\CentipedeSpawner.cs" />
-     <Compile Include="Assets\Scripts\AttackState.cs" />
-     <Compile Include="Assets\Scripts\StateMachine.cs" />
      <Compile Include="Assets\Scripts\Centipede.cs" />
      <Compile Include="Assets\Scripts\Body.cs" />
      <Compile Include="Assets\Scripts\MouseTexture.cs" />
      <Compile Include="Assets\Scripts\Tail.cs" />
-     <Compile Include="Assets\Scripts\IDamagable.cs" />
      <Compile Include="Assets\Scripts\LevelBoundary.cs" />
-     <Compile Include="Assets\Scripts\StandardWeapon.cs" />
      <Compile Include="Assets\Scripts\Path.cs" />
+     <Compile Include="Assets\Scripts\CentipedeSpawner.cs" />
+     <Compile Include="Assets\Scripts\AttackState.cs" />
+     <Compile Include="Assets\Scripts\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\IDamagable.cs" />
+     <Compile Include="Assets\Scripts\StandardWeapon.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\IWeapon.cs" />
+     <Compile Include="Assets\Scripts\SpiralWeapon.cs" />
+     <Compile Include="Assets\Scripts\BurstWeapon.cs" />
+     <Compile Include="Assets\Scripts\DoorManager.cs" />
+     <Compile Include="Assets\Scripts\DeadState.cs" />
     <Reference Include="UnityEngine">
         <HintPath>D:/Program Files/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
@@ -275,11 +279,11 @@
     <Reference Include="UnityEditor.UnityConnectModule">
         <HintPath>D:/Program Files/2020.3.12f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-        <HintPath>D:/game/Unity/Centipede game/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="Pathfinding.Ionic.Zip.Reduced">
         <HintPath>D:/game/Unity/Centipede game/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+        <HintPath>D:/game/Unity/Centipede game/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
         <HintPath>D:/Program Files/2020.3.12f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -626,8 +630,8 @@
     <Reference Include="System.Xml.Serialization">
         <HintPath>D:/Program Files/2020.3.12f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Animation.Editor">
-        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    <Reference Include="Unity.2D.Tilemap.Extras">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InternalAPIEngineBridge.001">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
@@ -638,11 +642,20 @@
     <Reference Include="Unity.2D.PixelPerfect">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.PixelPerfect.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.2D.Tilemap.Editor">
-        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Animation.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="PsdPlugin">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/PsdPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
@@ -656,6 +669,9 @@
     <Reference Include="Unity.TextMeshPro">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.Searcher.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.IK.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.IK.Editor.dll</HintPath>
     </Reference>
@@ -668,8 +684,8 @@
     <Reference Include="Unity.2D.Path.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
@@ -680,8 +696,17 @@
     <Reference Include="Unity.Rider.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.2D.Tilemap.Extras.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Tilemap.Extras.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEditorBridge.001">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Mathematics">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
@@ -689,11 +714,17 @@
     <Reference Include="Unity.2D.IK.Runtime">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.IK.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.ShaderGraph.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.ShaderGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Cinemachine">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.cinemachine.editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Universal.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Animation.Triangle.Runtime">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll</HintPath>
@@ -703,6 +734,12 @@
     </Reference>
     <Reference Include="Unity.2D.PixelPerfect.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.PixelPerfect.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
@@ -719,22 +756,25 @@
     <Reference Include="Unity.2D.Common.Editor">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Editor">
+        <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.RenderPipelines.Core.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.SpriteShape.Runtime">
         <HintPath>D:/game/Unity/Centipede game/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
-      <Project>{ed46025d-b577-565d-15d4-fd5abf02787f}</Project>
-      <Name>AstarPathfindingProjectEditor</Name>
+    <ProjectReference Include="PackageToolsEditor.csproj">
+      <Project>{b98a9bbc-698b-fcaa-cd5d-5eaa711b0428}</Project>
+      <Name>PackageToolsEditor</Name>
     </ProjectReference>
     <ProjectReference Include="AstarPathfindingProject.csproj">
       <Project>{e9762f59-20f6-7177-334d-21a3c8cf7780}</Project>
       <Name>AstarPathfindingProject</Name>
     </ProjectReference>
-    <ProjectReference Include="PackageToolsEditor.csproj">
-      <Project>{b98a9bbc-698b-fcaa-cd5d-5eaa711b0428}</Project>
-      <Name>PackageToolsEditor</Name>
+    <ProjectReference Include="AstarPathfindingProjectEditor.csproj">
+      <Project>{ed46025d-b577-565d-15d4-fd5abf02787f}</Project>
+      <Name>AstarPathfindingProjectEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

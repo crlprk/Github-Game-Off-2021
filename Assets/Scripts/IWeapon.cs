@@ -5,8 +5,10 @@ using UnityEngine;
 public abstract class Weapon : MonoBehaviour
 {
     public float ROF;
+    public Transform barrel;
+    public string ammunitionType;
     public virtual void Fire() { }
-    public bool isEquipped;
+    public bool isEquipped; 
 
     protected virtual void FixedUpdate() 
     {

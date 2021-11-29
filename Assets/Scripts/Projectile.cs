@@ -23,6 +23,10 @@ public class Projectile : MonoBehaviour
             target.TakeDamage(this);
             Debug.Log("Damaged");
         }
+        if (other.gameObject.layer == 11)
+        {
+            other.gameObject.GetComponent<Rigidbody2D>().AddForce(rb.velocity.normalized);
+        }
         this.gameObject.SetActive(false);
     }
 }
