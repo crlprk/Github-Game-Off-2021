@@ -78,6 +78,11 @@ public class Body : MonoBehaviour, IDamagable
     public virtual void Die()
     {
         animator.SetBool("IsDead", true);
+        
+        GameObject explosion = ObjectPool.Instance.GetObject("explosion");
+        explosion.transform.position = transform.position;
+        explosion.SetActive(true);
+
         isDead = true;
         inChain = false;
         gameObject.layer = 11;

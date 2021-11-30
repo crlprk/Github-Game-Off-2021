@@ -21,7 +21,7 @@ public class Projectile : MonoBehaviour
         if (target != null)
         {
             target.TakeDamage(this);
-            Debug.Log("Damaged");
+            Debug.Log(other.gameObject);
         }
         if (other.gameObject.layer == 11)
         {

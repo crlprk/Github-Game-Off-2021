@@ -5,16 +5,16 @@ using Pathfinding;
 
 public class AttackState : IState
 {
-    StateMachine AIFSM;
-    float detectionRadius;
-    float attackRadius;
-    Transform transform;
-    Transform weaponTransform;
-    IAstarAI agent;
-    Transform target;
+    protected StateMachine AIFSM;
+    protected float detectionRadius;
+    protected float attackRadius;
+    protected Transform transform;
+    protected Transform weaponTransform;
+    protected IAstarAI agent;
+    protected Transform target;
     Weapon weapon;
-    Vector3 dir;
-    float nextFireTime;
+    protected Vector3 dir;
+    protected float nextFireTime;
     
     public AttackState(Enemy entity)
     {
@@ -24,19 +24,19 @@ public class AttackState : IState
         transform = entity.transform;
         weaponTransform = entity.weaponTransform;
         agent = entity.agent;
-        weapon = entity.weapon;
+        weapon = entity.weapon[0];
         target = entity.target.gameObject.transform;
     }
-    public void Enter()
+    public virtual void Enter()
     {
         nextFireTime = 0;
        
     }
-    public void Exit()
+    public virtual void Exit()
     {
         
     }
-    public void Update()
+    public virtual void Update()
     {
         dir = target.position - transform.position;
         
@@ -51,7 +51,7 @@ public class AttackState : IState
             agent.SearchPath();
         }
     }
-    public void FixedUpdate()
+    public virtual void FixedUpdate()
     {
         
         dir.Normalize();

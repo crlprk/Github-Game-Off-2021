@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour, IDamagable
     public SpriteRenderer spriteRenderer;
     public Sprite deathSprite;
     public Transform target;
-    public Weapon weapon;
+    public Weapon[] weapon;
     public Transform weaponTransform;
     public Transform[] patrolPoints;
     public float health;
@@ -17,10 +17,10 @@ public class Enemy : MonoBehaviour, IDamagable
     public StateMachine AIFSM;
     [HideInInspector]
     public IAstarAI agent;
-    Rigidbody2D rb;
+    protected Rigidbody2D rb;
     public bool isDead;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         AIFSM = new StateMachine();
         AIFSM.initialize();
@@ -32,11 +32,11 @@ public class Enemy : MonoBehaviour, IDamagable
 
 
     }
-    private void Start() {
+    protected virtual void Start() {
         AIFSM.Change("patrolling");
     }
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         AIFSM.m_currentState.Update();
         if (health <= 0)
@@ -44,7 +44,7 @@ public class Enemy : MonoBehaviour, IDamagable
             Die();
         }
     }
-    private void FixedUpdate() {
+    protected virtual void FixedUpdate() {
         AIFSM.m_currentState.FixedUpdate();
     }
 
@@ -53,12 +53,17 @@ public class Enemy : MonoBehaviour, IDamagable
         health -= source.damage;
     }
 
-    public void Die()
+    public virtual void Die()
     {
+        GameObject explosion = ObjectPool.Instance.GetObject("explosion");
+        explosion.transform.position = transform.position;
+        explosion.SetActive(true);
+
         spriteRenderer.sprite = deathSprite;
         gameObject.layer = 11;
         rb.mass = 0.01f;
         isDead = true;
         AIFSM.Change("dead");
+        this.enabled = false;
     }
 }

@@ -17,6 +17,7 @@ public class Centipede : MonoBehaviour
     bool isStart;
     float turnDir;
     int forwardMove;
+    public bool isDead;
 
     private void Awake() 
     {
@@ -139,6 +140,8 @@ public class Centipede : MonoBehaviour
         }
         if (components.Count == 2 && !isStart)
         {
+            isDead = true;
+            this.enabled = false;
             Debug.Log("Game over");
         }
     }
