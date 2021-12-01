@@ -15,11 +15,12 @@ public class Boss : Enemy
         rb = GetComponent<Rigidbody2D>();
         AIFSM.Add("laserBarrage", new LaserState(this));
         AIFSM.Add("singleFire", new TargetState(this));
+        AIFSM.Add("standby", new standbyState(this));
         AIFSM.Add("dead", new DeadState());
     }
     protected override void Start()
     {
-        AIFSM.Change("dead");
+        AIFSM.Change("standby");
     }
 
     protected override void FixedUpdate()

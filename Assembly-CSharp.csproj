@@ -36,6 +36,7 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\BossStates.cs" />
      <Compile Include="Assets\Scripts\PatrolState.cs" />
      <Compile Include="Assets\Scripts\Projectile.cs" />
      <Compile Include="Assets\Scripts\Head.cs" />
@@ -44,27 +45,28 @@
      <Compile Include="Assets\Scripts\Body.cs" />
      <Compile Include="Assets\Scripts\MouseTexture.cs" />
      <Compile Include="Assets\Scripts\Tail.cs" />
+     <Compile Include="Assets\Scripts\Boss.cs" />
+     <Compile Include="Assets\Scripts\CameraMove.cs" />
+     <Compile Include="Assets\Scripts\Explosion.cs" />
+     <Compile Include="Assets\Scripts\RestartMenu.cs" />
      <Compile Include="Assets\Scripts\LevelBoundary.cs" />
      <Compile Include="Assets\Scripts\DeadState.cs" />
      <Compile Include="Assets\Scripts\Path.cs" />
+     <Compile Include="Assets\Scripts\DontDestroy.cs" />
+     <Compile Include="Assets\Scripts\GameStateManager.cs" />
      <Compile Include="Assets\Scripts\CentipedeSpawner.cs" />
      <Compile Include="Assets\Scripts\SpiralWeapon.cs" />
      <Compile Include="Assets\Scripts\AttackState.cs" />
      <Compile Include="Assets\Scripts\StateMachine.cs" />
+     <Compile Include="Assets\Scripts\StartButton.cs" />
      <Compile Include="Assets\Scripts\IDamagable.cs" />
      <Compile Include="Assets\Scripts\DoorManager.cs" />
      <Compile Include="Assets\Scripts\StandardWeapon.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\IWeapon.cs" />
-     <Compile Include="Assets\Scripts\Boss.cs" />
-     <Compile Include="Assets\Scripts\BossStates.cs" />
-     <Compile Include="Assets\Scripts\CameraMove.cs" />
-     <Compile Include="Assets\Scripts\StartButton.cs" />
-     <Compile Include="Assets\Scripts\DontDestroy.cs" />
-     <Compile Include="Assets\Scripts\GameStateManager.cs" />
-     <Compile Include="Assets\Scripts\RestartMenu.cs" />
-     <Compile Include="Assets\Scripts\Explosion.cs" />
+     <Compile Include="Assets\Scripts\LaserWeapon.cs" />
+     <Compile Include="Assets\Scripts\screenshot.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

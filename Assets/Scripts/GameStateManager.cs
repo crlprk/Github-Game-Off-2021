@@ -12,9 +12,8 @@ public class GameStateManager : MonoBehaviour
     public GameObject restart;
     public GameObject healthbar;
     private void Update() {
-        if ((boss.transform.position - centipede.transform.position).magnitude < 5)
+        if (boss.AIFSM.m_currentState == boss.AIFSM.m_states["laserBarrage"])
         {
-            boss.AIFSM.Change("laserBarrage");
             healthbar.SetActive(true);
         }
         if (!centipede.isDead && boss.isDead)

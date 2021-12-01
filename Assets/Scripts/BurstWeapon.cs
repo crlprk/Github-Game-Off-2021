@@ -7,6 +7,7 @@ public class BurstWeapon : Weapon
     public int burstCount;
     public override void Fire()
     {
+        audioSource.PlayOneShot(audioSource.clip);
         for (int i = 0; i < burstCount; i++)
         {
             GameObject bullet = ObjectPool.Instance.GetObject(ammunitionType);

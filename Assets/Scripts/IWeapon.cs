@@ -9,6 +9,10 @@ public abstract class Weapon : MonoBehaviour
     public string ammunitionType;
     public virtual void Fire() { }
     public bool isEquipped; 
+    protected AudioSource audioSource;
+    protected virtual void Awake() {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     protected virtual void FixedUpdate() 
     {

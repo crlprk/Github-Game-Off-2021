@@ -9,6 +9,11 @@ public class SpiralWeapon : Weapon
     {
         float delta = 360 / spiralCount;
         float total = 0;
+        if (ROF >= 0.1)
+        {
+            audioSource.PlayOneShot(audioSource.clip);
+        }
+        
         for (int i = 0; i < spiralCount; i++)
         {
             GameObject bullet = ObjectPool.Instance.GetObject(ammunitionType);
